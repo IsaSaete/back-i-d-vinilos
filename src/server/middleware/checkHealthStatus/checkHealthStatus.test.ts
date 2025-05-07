@@ -4,10 +4,10 @@ import checkHealthStatus from "./checkHealthStatus.js";
 describe("Given the checkHealthStatus middleware", () => {
   describe("When it receives a repsonse", () => {
     const req = {} as Request;
-    const res = {
+    const res: Pick<Response, "status" | "json"> = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
-    } as Pick<Response, "status" | "json">;
+    };
 
     beforeEach(() => {
       jest.clearAllMocks();
