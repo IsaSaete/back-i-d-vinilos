@@ -9,7 +9,7 @@ const vinylSchema = new Schema<VinylStructure>({
   genre: { type: String, required: true },
   format: { type: String, required: true },
   coverImageUrl: { type: String, required: true },
-  style: { type: [String] },
+  style: { type: [String], maxlength: 3 },
   purchasedAt: { type: String },
   notes: { type: String },
   owned: { type: Boolean, default: false },

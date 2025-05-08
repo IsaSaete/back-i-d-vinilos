@@ -7,8 +7,8 @@ export interface VinylStructure {
   genre: string;
   format: string;
   coverImageUrl: string;
-  style: string | string[];
-  purchasedAt: string;
-  notes: string;
+  style?: string[];
+  purchasedAt?: string;
+  notes?: string;
   owned: boolean;
 }
