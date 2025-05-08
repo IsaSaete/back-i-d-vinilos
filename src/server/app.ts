@@ -6,6 +6,8 @@ import handleEndpointNotFound from "./middleware/handleEndpointNotFound/handleEn
 
 const app = express();
 
+app.disable("x-powered-by");
+
 app.use(morgan("dev"));
 
 app.get("/", checkHealthStatus);
