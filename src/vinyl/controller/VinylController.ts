@@ -4,7 +4,7 @@ import { VinylControllerStructure, VinylRequest } from "./types.js";
 import { VinylStructure } from "../types.js";
 
 class VinylController implements VinylControllerStructure {
-  constructor(private vinylModel: Model<VinylStructure>) {}
+  constructor(private readonly vinylModel: Model<VinylStructure>) {}
 
   public getVinylsPage = async (
     req: VinylRequest,

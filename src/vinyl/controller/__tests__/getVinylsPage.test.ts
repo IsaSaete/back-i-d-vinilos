@@ -1,12 +1,15 @@
 import { Response } from "express";
-import { VinylRequest } from "../types.js";
 import { Model } from "mongoose";
+import { VinylRequest } from "../types.js";
 import { VinylStructure } from "../../types.js";
 import { vinylsFixtures } from "../../fixtures.js";
 import VinylController from "../VinylController.js";
 
+let vinyls = [...vinylsFixtures];
+
 beforeEach(() => {
   jest.clearAllMocks();
+  vinyls = [...vinylsFixtures];
 });
 
 describe("Given the getVinylsPage method of VinylController", () => {
@@ -23,26 +26,28 @@ describe("Given the getVinylsPage method of VinylController", () => {
         sort: jest.fn().mockReturnValue({
           skip: jest.fn().mockReturnValue({
             limit: jest.fn().mockReturnValue({
-              exec: jest.fn().mockResolvedValue(vinylsFixtures.slice(0, 6)),
+              exec: jest.fn().mockResolvedValue(vinyls.slice(0, 6)),
             }),
           }),
         }),
       }),
-      countDocuments: jest.fn().mockResolvedValue(vinylsFixtures.length),
+      countDocuments: jest.fn().mockResolvedValue(vinyls.length),
     };
 
     test("Then it should call the response's mehtod with a status 200", async () => {
+      const expectedStatus = 200;
+
       const vinylController = new VinylController(
         vinylModel as Model<VinylStructure>,
       );
 
       await vinylController.getVinylsPage(req as VinylRequest, res as Response);
 
-      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.status).toHaveBeenCalledWith(expectedStatus);
     });
 
     test("Then it should call the response's method json with 6 vinyls", async () => {
-      const expectedVinylsByPage = vinylsFixtures.slice(0, 6);
+      const expectedVinylsByPage = vinyls.slice(0, 6);
 
       const vinylController = new VinylController(
         vinylModel as Model<VinylStructure>,
@@ -55,8 +60,9 @@ describe("Given the getVinylsPage method of VinylController", () => {
       );
     });
 
-    test("Then it should call the response's method json  with 10 as a total number of vinyls", async () => {
-      const expectedVinylsTotal = vinylsFixtures.length;
+    test("Then it should call the response's method json with 12 as a total number of vinyls", async () => {
+      const expectedVinylsTotal = vinyls.length;
+
       const vinylController = new VinylController(
         vinylModel as Model<VinylStructure>,
       );
@@ -83,16 +89,27 @@ describe("Given the getVinylsPage method of VinylController", () => {
             limit: jest.fn().mockReturnValue({
               exec: jest
                 .fn()
-                .mockResolvedValue(vinylsFixtures.sort().slice(6, 12)),
+                .mockResolvedValue(
+                  vinyls
+                    .sort((vinylA: VinylStructure, vinylB: VinylStructure) =>
+                      vinylA.artist.localeCompare(vinylB.artist),
+                    )
+                    .slice(6, 12),
+                ),
             }),
           }),
         }),
       }),
-      countDocuments: jest.fn().mockResolvedValue(vinylsFixtures.length),
+      countDocuments: jest.fn().mockResolvedValue(vinyls.length),
     };
 
-    test("Then it should call the response's method json from vinyl 7 to 11", async () => {
-      const expectedVinylsPage2 = vinylsFixtures.slice(6, 12);
+    test("Then it should call the response's method json from vinyl 7 to 12", async () => {
+      const expectedVinylsPage2 = vinyls
+        .sort((vinylA: VinylStructure, vinylB: VinylStructure) =>
+          vinylA.artist.localeCompare(vinylB.artist),
+        )
+        .slice(6, 12);
+
       const vinylController = new VinylController(
         vinylModel as Model<VinylStructure>,
       );
