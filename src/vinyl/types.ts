@@ -7,10 +7,10 @@ export interface VinylStructure {
   genre: string;
   format: string;
   coverImageUrl: string;
-  style?: string[];
+  styles?: string[];
   purchasedAt?: string;
   notes?: string;
-  owned: boolean;
+  isOwned: boolean;
 }
 
 export type VinylDto = Omit<VinylStructure, "_id">;

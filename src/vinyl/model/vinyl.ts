@@ -9,10 +9,10 @@ const vinylSchema = new Schema<VinylStructure>({
   genre: { type: String, required: true },
   format: { type: String, enum: ['12"', '7"'], required: true },
   coverImageUrl: { type: String, required: true },
-  style: { type: [String], maxlength: 3 },
+  styles: { type: [String], maxlength: 3 },
   purchasedAt: { type: String },
   notes: { type: String },
-  owned: { type: Boolean, default: false },
+  isOwned: { type: Boolean, default: false },
 });
 
 const Vinyl = model("Vinyl", vinylSchema, "vinilos");
