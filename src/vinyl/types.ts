@@ -12,3 +12,12 @@ export interface VinylStructure {
   notes?: string;
   owned: boolean;
 }
+
+export type VinylDto = Omit<VinylStructure, "_id" | "releaseYear"> & {
+  releaseYear: string;
+};
+
+export type GetVinylsResponseBody = {
+  vinyls: VinylStructure[];
+  vinylsTotal: number;
+};
