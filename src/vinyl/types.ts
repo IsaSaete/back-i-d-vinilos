@@ -3,7 +3,7 @@ export interface VinylStructure {
   title: string;
   artist: string;
   country: string;
-  releaseYear: Date;
+  releaseDate: Date;
   genre: string;
   format: string;
   coverImageUrl: string;
@@ -13,9 +13,7 @@ export interface VinylStructure {
   owned: boolean;
 }
 
-export type VinylDto = Omit<VinylStructure, "_id" | "releaseYear"> & {
-  releaseYear: string;
-};
+export type VinylDto = Omit<VinylStructure, "_id">;
 
 export type GetVinylsResponseBody = {
   vinyls: VinylStructure[];

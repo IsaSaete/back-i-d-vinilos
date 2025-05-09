@@ -38,7 +38,7 @@ describe("Given the GET /vinyls endpoint", () => {
       expect(response.status).toBe(expectedStatus);
     });
 
-    test("Then it should respond with a total of 2 vinyls, Silen Shout & Mental Groove.", async () => {
+    test("Then it should respond with a total of 2 vinyls, Silent Shout & Mental Groove.", async () => {
       const newVinyls = await Vinyl.create(silentShout, mentalGroove);
 
       const expectedVinylsTotal = newVinyls.length;
