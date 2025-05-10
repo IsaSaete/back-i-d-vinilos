@@ -8,11 +8,11 @@ export const silentShout: VinylDto = {
   genre: "Electro",
   format: '12"',
   coverImageUrl: "https://example.com/silent-shout.jpg",
-  style: ["Synth-pop", "Darkwave"],
+  styles: ["Synth-pop", "Darkwave"],
   purchasedAt: "Amoeba Music, LA",
   notes:
     "Este álbum marcó un giro oscuro y experimental en el dúo sueco, alejándose de lo pop. ",
-  owned: true,
+  isOwned: true,
 };
 
 export const mentalGroove: VinylDto = {
@@ -23,11 +23,11 @@ export const mentalGroove: VinylDto = {
   genre: "Techno",
   format: '12"',
   coverImageUrl: "https://example.com/mental-groove.jpg",
-  style: ["Dub Techno", "Ambient Techno"],
+  styles: ["Dub Techno", "Ambient Techno"],
   purchasedAt: "Mental Groove Records, Ginebra",
   notes:
     "Una recopilación de rarezas y joyas techno suizo que muestra la diversidad y profundidad de la escena.",
-  owned: true,
+  isOwned: true,
 };
 
 export const mutant: VinylDto = {
@@ -38,8 +38,8 @@ export const mutant: VinylDto = {
   genre: "Experimental Electronic",
   format: '12"',
   coverImageUrl: "https://example.com/mutant-arca.jpg",
-  style: ["Avant-Garde", "Deconstructed Club"],
+  styles: ["Avant-Garde", "Deconstructed Club"],
   notes:
     "Sus sonidos rotos y atmósferas inestables lo han consolidado como una figura clave del nuevo sonido latino experimental.",
-  owned: true,
+  isOwned: true,
 };

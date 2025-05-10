@@ -1,5 +1,7 @@
-import debug from "debug";
+import createDebug from "debug";
 import mongoose from "mongoose";
+
+const debug = createDebug("vinyls:database");
 
 const connectToDatabase = async (connectionString: string): Promise<void> => {
   try {

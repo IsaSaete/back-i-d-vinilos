@@ -9,11 +9,11 @@ export const strangeWeather: VinylStructure = {
   genre: "Dance-punk",
   format: '12"',
   coverImageUrl: "https://example.com/strange-weather.jpg",
-  style: ["Indie Dance", "Alternative Dance"],
+  styles: ["Indie Dance", "Alternative Dance"],
   purchasedAt: "Rough Trade NYC",
   notes:
     "El álbum fue grabado en Berlín y se inspira en la escena club local. La banda incorpora elementos de punk con estructuras bailables, ofreciendo una experiencia que difiere de los cánones típicos del rock alternativo estadounidense. La crítica lo recibió con opiniones mixtas, pero se volvió un favorito en pistas de baile alternativas.",
-  owned: true,
+  isOwned: true,
 };
 
 export const lp5: VinylStructure = {
@@ -25,10 +25,10 @@ export const lp5: VinylStructure = {
   genre: "Electronic",
   format: '12"',
   coverImageUrl: "https://example.com/apparat-lp5.jpg",
-  style: ["Ambient", "Techno", "Experimental"],
+  styles: ["Ambient", "Techno", "Experimental"],
   notes:
     "Apparat explora una atmósfera introspectiva donde los sintetizadores se mezclan con cuerdas clásicas. Es un disco que requiere una escucha atenta y revela matices emocionales en cada reproducción.",
-  owned: false,
+  isOwned: false,
 };
 
 export const spiritOfEden: VinylStructure = {
@@ -40,11 +40,11 @@ export const spiritOfEden: VinylStructure = {
   genre: "Post-rock",
   format: '12"',
   coverImageUrl: "https://example.com/spirit-of-eden.jpg",
-  style: ["Art Rock", "Experimental"],
+  styles: ["Art Rock", "Experimental"],
   purchasedAt: "Discogs",
   notes:
     "Considerado precursor del post-rock, este disco marcó una ruptura con el pop comercial. La banda optó por la improvisación y la grabación analógica, creando un sonido orgánico, profundo y complejo que desafía las estructuras convencionales.",
-  owned: true,
+  isOwned: true,
 };
 
 export const inColour: VinylStructure = {
@@ -56,8 +56,8 @@ export const inColour: VinylStructure = {
   genre: "Electronic",
   format: '12"',
   coverImageUrl: "https://example.com/in-colour.jpg",
-  style: ["UK Garage", "Future Bass"],
-  owned: false,
+  styles: ["UK Garage", "Future Bass"],
+  isOwned: false,
 };
 
 export const fromDeewee: VinylStructure = {
@@ -69,9 +69,9 @@ export const fromDeewee: VinylStructure = {
   genre: "Electro Rock",
   format: '12"',
   coverImageUrl: "https://example.com/from-deewee.jpg",
-  style: ["Synth-pop", "Techno Rock"],
+  styles: ["Synth-pop", "Techno Rock"],
   purchasedAt: "Vinyl Dreams, San Francisco",
-  owned: true,
+  isOwned: true,
 };
 
 export const minimalNation: VinylStructure = {
@@ -83,10 +83,10 @@ export const minimalNation: VinylStructure = {
   genre: "Techno",
   format: '12"',
   coverImageUrl: "https://example.com/minimal-nation.jpg",
-  style: ["Minimal Techno"],
+  styles: ["Minimal Techno"],
   notes:
     "Un pilar del techno de Detroit, 'Minimal Nation' cambió el paradigma al demostrar que menos puede ser más. Robert Hood eliminó adornos superfluos y se centró en pulsos repetitivos, dando paso a un nuevo lenguaje sonoro.",
-  owned: true,
+  isOwned: true,
 };
 
 export const hissingOfSummerLawns: VinylStructure = {
@@ -98,8 +98,8 @@ export const hissingOfSummerLawns: VinylStructure = {
   genre: "Jazz Fusion",
   format: '12"',
   coverImageUrl: "https://example.com/joni-hissing.jpg",
-  style: ["Art Pop", "Folk Jazz"],
-  owned: false,
+  styles: ["Art Pop", "Folk Jazz"],
+  isOwned: false,
 };
 
 export const rispah: VinylStructure = {
@@ -111,10 +111,10 @@ export const rispah: VinylStructure = {
   genre: "Alternative",
   format: '12"',
   coverImageUrl: "https://example.com/rispah.jpg",
-  style: ["Electronic Soul", "Ambient Rock"],
+  styles: ["Electronic Soul", "Ambient Rock"],
   notes:
     "Inspirado en el duelo personal del vocalista, este álbum mezcla sonidos espirituales con atmósferas densas. Fue producido por Richard File (ex-UNKLE), y destaca por sus capas sutiles de sintetizadores y percusiones africanas.",
-  owned: true,
+  isOwned: true,
 };
 
 export const innocenceAndDecadence: VinylStructure = {
@@ -126,9 +126,9 @@ export const innocenceAndDecadence: VinylStructure = {
   genre: "Psychedelic Rock",
   format: '7"',
   coverImageUrl: "https://example.com/graveyard.jpg",
-  style: ["Hard Rock", "Blues Rock"],
+  styles: ["Hard Rock", "Blues Rock"],
   purchasedAt: "Festival de Roskilde",
-  owned: false,
+  isOwned: false,
 };
 
 export const theCaretaker: VinylStructure = {
@@ -140,10 +140,10 @@ export const theCaretaker: VinylStructure = {
   genre: "Ambient",
   format: '7"',
   coverImageUrl: "https://example.com/the-caretaker.jpg",
-  style: ["Hauntology", "Ambient", "Sound Collage"],
+  styles: ["Hauntology", "Ambient", "Sound Collage"],
   notes:
     "Inspirado en la película 'The Shining', este proyecto reutiliza grabaciones de salón de los años 20 y 30, distorsionadas como si fueran recuerdos degradados por el tiempo. El resultado es inquietante y profundamente evocador.",
-  owned: true,
+  isOwned: true,
 };
 
 export const awakeningsLive: VinylStructure = {
@@ -155,11 +155,11 @@ export const awakeningsLive: VinylStructure = {
   genre: "Techno",
   format: '12"',
   coverImageUrl: "https://example.com/awakenings-live.jpg",
-  style: ["Industrial Techno", "Live Techno"],
+  styles: ["Industrial Techno", "Live Techno"],
   purchasedAt: "Clone Records, Rotterdam",
   notes:
     "Grabado en directo durante el icónico festival Awakenings, este disco captura la crudeza del techno en vivo.",
-  owned: true,
+  isOwned: true,
 };
 
 export const internalEmpire: VinylStructure = {
@@ -171,10 +171,10 @@ export const internalEmpire: VinylStructure = {
   genre: "Minimal Techno",
   format: '7"',
   coverImageUrl: "https://example.com/internal-empire.jpg",
-  style: ["Detroit Techno", "Minimal"],
+  styles: ["Detroit Techno", "Minimal"],
   notes:
     "Con 'Internal Empire', Robert Hood reafirma su papel como pionero del minimal techno. A diferencia de sus obras más industriales, aquí opta por una precisión quirúrgica en beats y un uso casi espiritual del espacio sonoro. Considerado una obra esencial para entender el ADN del techno moderno.",
-  owned: false,
+  isOwned: false,
 };
 
 export const vinylsFixtures: VinylStructure[] = [

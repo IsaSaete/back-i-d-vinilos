@@ -28,7 +28,7 @@ class VinylController implements VinylControllerStructure {
       .limit(vinylsByPage)
       .exec();
 
-    res.status(200).json({ vinyls: vinyls, vinylsTotal: vinylsTotal });
+    res.status(200).json({ vinyls, vinylsTotal });
   };
 }
 
