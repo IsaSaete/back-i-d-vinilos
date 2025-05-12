@@ -1,7 +1,7 @@
 import { VinylStructure } from "./types.js";
 
 export const strangeWeather: VinylStructure = {
-  _id: "1",
+  _id: "a3f9d7c2e5b8147ad09c3e1f",
   title: "Strange Weather, Isn't It?",
   artist: "!!! (Chk Chk Chk)",
   country: "USA",
@@ -17,7 +17,7 @@ export const strangeWeather: VinylStructure = {
 };
 
 export const lp5: VinylStructure = {
-  _id: "2",
+  _id: "c8e4f2a7b93d01e7a6c5d319",
   title: "LP5",
   artist: "Apparat",
   country: "Germany",
@@ -32,7 +32,7 @@ export const lp5: VinylStructure = {
 };
 
 export const spiritOfEden: VinylStructure = {
-  _id: "3",
+  _id: "1d3a8c7e9b04f6c2e718a4b5",
   title: "Spirit of Eden",
   artist: "Talk Talk",
   country: "UK",
@@ -48,7 +48,20 @@ export const spiritOfEden: VinylStructure = {
 };
 
 export const inColour: VinylStructure = {
-  _id: "4",
+  _id: "f7b13e4c8a6d9c05e3b7218a",
+  title: "In Colour",
+  artist: "Jamie xx",
+  country: "UK",
+  releaseDate: new Date("2015-05-29"),
+  genre: "Electronic",
+  format: '12"',
+  coverImageUrl: "https://example.com/in-colour.jpg",
+  styles: ["UK Garage", "Future Bass"],
+  isOwned: true,
+};
+
+export const inColourNotOwned: VinylStructure = {
+  _id: "f7b13e4c8a6d9c05e3b7218a",
   title: "In Colour",
   artist: "Jamie xx",
   country: "UK",
@@ -61,7 +74,7 @@ export const inColour: VinylStructure = {
 };
 
 export const fromDeewee: VinylStructure = {
-  _id: "5",
+  _id: "2c9e7d4f1a8b03c6d4e17f39",
   title: "From Deewee",
   artist: "Soulwax",
   country: "Belgium",
@@ -75,7 +88,7 @@ export const fromDeewee: VinylStructure = {
 };
 
 export const minimalNation: VinylStructure = {
-  _id: "6",
+  _id: "b04f6a3d9e7c2f81c5a7931e",
   title: "Minimal Nation",
   artist: "Robert Hood",
   country: "USA",
@@ -90,7 +103,7 @@ export const minimalNation: VinylStructure = {
 };
 
 export const hissingOfSummerLawns: VinylStructure = {
-  _id: "7",
+  _id: "d13a6f2e4b8c09a7f3e51c7d",
   title: "The Hissing of Summer Lawns",
   artist: "Joni Mitchell",
   country: "Canada",
@@ -103,7 +116,7 @@ export const hissingOfSummerLawns: VinylStructure = {
 };
 
 export const rispah: VinylStructure = {
-  _id: "8",
+  _id: "9f8d7b3a2e4c1f06a7c395e1",
   title: "Rispah",
   artist: "The Invisible",
   country: "UK",
@@ -118,7 +131,7 @@ export const rispah: VinylStructure = {
 };
 
 export const innocenceAndDecadence: VinylStructure = {
-  _id: "9",
+  _id: "e7c13a9d5b0f2c48a193e6b0",
   title: "Innocence & Decadence",
   artist: "Graveyard",
   country: "Sweden",
@@ -132,7 +145,7 @@ export const innocenceAndDecadence: VinylStructure = {
 };
 
 export const theCaretaker: VinylStructure = {
-  _id: "10",
+  _id: "3f92c7b5d1e04a8f6c7e39ad",
   title: "The Caretaker",
   artist: "Leyland Kirby",
   country: "UK",
@@ -147,7 +160,7 @@ export const theCaretaker: VinylStructure = {
 };
 
 export const awakeningsLive: VinylStructure = {
-  _id: "11",
+  _id: "a91d3b6e2c7f0485e9b31cf7",
   title: "Awakenings Live",
   artist: "Speedy J",
   country: "Netherlands",
@@ -163,7 +176,7 @@ export const awakeningsLive: VinylStructure = {
 };
 
 export const internalEmpire: VinylStructure = {
-  _id: "12",
+  _id: "7d5e3a9c0f8b24c1e6a937b2",
   title: "Internal Empire",
   artist: "Robert Hood",
   country: "USA",
@@ -174,6 +187,21 @@ export const internalEmpire: VinylStructure = {
   styles: ["Detroit Techno", "Minimal"],
   notes:
     "Con 'Internal Empire', Robert Hood reafirma su papel como pionero del minimal techno. A diferencia de sus obras más industriales, aquí opta por una precisión quirúrgica en beats y un uso casi espiritual del espacio sonoro. Considerado una obra esencial para entender el ADN del techno moderno.",
+  isOwned: false,
+};
+
+export const marineroDeLuces: VinylStructure = {
+  _id: "f3c9a7b2e6d0",
+  title: "Marinero de Luces",
+  artist: "Isabel Pantoja",
+  country: "España",
+  releaseDate: new Date("1985-04-10"),
+  genre: "Copla",
+  format: '7"',
+  coverImageUrl: "https://example.com/marinero-de-luces.jpg",
+  styles: ["Copla", "Canción Española"],
+  notes:
+    "Con 'Marinero de Luces', Isabel Pantoja marcó un antes y un después en su carrera.",
   isOwned: false,
 };
 
