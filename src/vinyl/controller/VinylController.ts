@@ -1,7 +1,8 @@
-import { Response } from "express";
-import { Model } from "mongoose";
+import { NextFunction, Response } from "express";
+import mongoose, { Model } from "mongoose";
 import { VinylControllerStructure, VinylRequest } from "./types.js";
 import { VinylStructure } from "../types.js";
+import ServerError from "../../server/serverError/serverError.js";
 
 class VinylController implements VinylControllerStructure {
   constructor(private readonly vinylModel: Model<VinylStructure>) {}
@@ -29,6 +30,30 @@ class VinylController implements VinylControllerStructure {
       .exec();
 
     res.status(200).json({ vinyls, vinylsTotal });
+  };
+
+  public addVinylToCollection = async (
+    req: VinylRequest,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    const vinylId = req.params.vinylId;
+
+    const isValidId = mongoose.isValidObjectId(vinylId);
+
+    if (!isValidId) {
+      const error = new ServerError(400, "Id not valid");
+
+      next(error);
+
+      return;
+    }
+
+    const vinylOwned = await this.vinylModel
+      .findByIdAndUpdate(vinylId, { isOwned: "true" }, { new: true })
+      .exec();
+
+    res.status(200).json({ vinyl: vinylOwned });
   };
 }
 

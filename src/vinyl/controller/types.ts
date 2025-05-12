@@ -6,8 +6,10 @@ export interface VinylControllerStructure {
 
 export type VinylQuery = { page: string };
 
+export type VinylParams = { vinylId: string };
+
 export type VinylRequest = Request<
-  Record<string, unknown>,
+  VinylParams,
   Record<string, unknown>,
   Record<string, unknown>,
   VinylQuery
