@@ -87,6 +87,20 @@ export const fromDeewee: VinylStructure = {
   isOwned: true,
 };
 
+export const fromDeeweeNotOwned: VinylStructure = {
+  _id: "2c9e7d4f1a8b03c6d4e17f39",
+  title: "From Deewee",
+  artist: "Soulwax",
+  country: "Belgium",
+  releaseDate: new Date("2017-03-24"),
+  genre: "Electro Rock",
+  format: '12"',
+  coverImageUrl: "https://example.com/from-deewee.jpg",
+  styles: ["Synth-pop", "Techno Rock"],
+  purchasedAt: "Vinyl Dreams, San Francisco",
+  isOwned: false,
+};
+
 export const minimalNation: VinylStructure = {
   _id: "b04f6a3d9e7c2f81c5a7931e",
   title: "Minimal Nation",

@@ -1,6 +1,11 @@
 import { Model } from "mongoose";
 import { NextFunction, Response } from "express";
-import { fromDeewee, inColour, inColourNotOwned } from "../../fixtures.js";
+import {
+  fromDeewee,
+  fromDeeweeNotOwned,
+  inColour,
+  inColourNotOwned,
+} from "../../fixtures.js";
 import { VinylStructure } from "../../types.js";
 import { VinylRequest } from "../types.js";
 import VinylController from "../VinylController.js";
@@ -42,7 +47,7 @@ describe("Given the addVinylToCollection method of VinylController", () => {
         vinylModel as Model<VinylStructure>,
       );
 
-      await vinylController.addVinylToCollection(
+      await vinylController.toggleVinylOwner(
         req as VinylRequest,
         res as Response,
         next as NextFunction,
@@ -56,7 +61,7 @@ describe("Given the addVinylToCollection method of VinylController", () => {
         vinylModel as Model<VinylStructure>,
       );
 
-      await vinylController.addVinylToCollection(
+      await vinylController.toggleVinylOwner(
         req as VinylRequest,
         res as Response,
         next as NextFunction,
@@ -79,25 +84,20 @@ describe("Given the addVinylToCollection method of VinylController", () => {
         exec: jest.fn().mockResolvedValue(fromDeewee),
       }),
       findByIdAndUpdate: jest.fn().mockReturnValue({
-        exec: jest.fn().mockResolvedValue(fromDeewee),
+        exec: jest.fn().mockResolvedValue(fromDeeweeNotOwned),
       }),
     };
 
-    test("Then it should call the received next method with 409, 'This vinyl is already in the collection'", async () => {
-      const error = new ServerError(
-        409,
-        "This vinyl is already in the collection",
-      );
-
+    test("Then it should return From Deewee vinyl that isn`t in collection'", async () => {
       const vinylController = new VinylController(
         vinylModel as Model<VinylStructure>,
       );
-      await vinylController.addVinylToCollection(
+      await vinylController.toggleVinylOwner(
         req as VinylRequest,
         res as Response,
         next as NextFunction,
       );
-      expect(next).toHaveBeenCalledWith(error);
+      expect(res.json).toHaveBeenCalledWith({ vinyl: fromDeeweeNotOwned });
     });
   });
 
@@ -124,7 +124,7 @@ describe("Given the addVinylToCollection method of VinylController", () => {
       const vinylController = new VinylController(
         vinylModel as Model<VinylStructure>,
       );
-      await vinylController.addVinylToCollection(
+      await vinylController.toggleVinylOwner(
         req as VinylRequest,
         res as Response,
         next as NextFunction,

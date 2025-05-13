@@ -30,7 +30,7 @@ describe("Given the PATCH /vinyls/add-to-collection/:vinylId endpoint", () => {
       await Vinyl.create(inColourNotOwned);
 
       const response = await request(app).patch(
-        `/vinyls/add-to-collection/${inColourNotOwned._id}`,
+        `/vinyls/toggleOwner/${inColourNotOwned._id}`,
       );
       const body = response.body as ResponseBodyVinyl;
 
@@ -44,7 +44,7 @@ describe("Given the PATCH /vinyls/add-to-collection/:vinylId endpoint", () => {
       const vinylIdNotValid = marineroDeLuces._id;
 
       const response = await request(app).patch(
-        `/vinyls/add-to-collection/${vinylIdNotValid}`,
+        `/vinyls/toggleOwner/${vinylIdNotValid}`,
       );
 
       const body = response.body as ResponsBodyError;
