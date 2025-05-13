@@ -49,11 +49,31 @@ class VinylController implements VinylControllerStructure {
       return;
     }
 
-    const vinylOwned = await this.vinylModel
+    const vinyl = await this.vinylModel.findById(vinylId).exec();
+
+    if (!vinyl) {
+      const error = new ServerError(404, "This vinyl does not exist");
+
+      next(error);
+
+      return;
+    }
+
+    if (vinyl.isOwned) {
+      const error = new ServerError(
+        409,
+        "This vinyl is already in the collection",
+      );
+      next(error);
+
+      return;
+    }
+
+    const ownedVinyl = await this.vinylModel
       .findByIdAndUpdate(vinylId, { isOwned: "true" }, { new: true })
       .exec();
 
-    res.status(200).json({ vinyl: vinylOwned });
+    res.status(200).json({ vinyl: ownedVinyl });
   };
 }
 
