@@ -8,4 +8,9 @@ const vinylController = new VinylController(Vinyl);
 
 vinylRouter.get("/", vinylController.getVinylsPage);
 
+vinylRouter.patch(
+  "/add-to-collection/:vinylId",
+  vinylController.addVinylToCollection,
+);
+
 export default vinylRouter;
