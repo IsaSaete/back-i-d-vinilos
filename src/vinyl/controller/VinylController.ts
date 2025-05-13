@@ -32,7 +32,7 @@ class VinylController implements VinylControllerStructure {
     res.status(200).json({ vinyls, vinylsTotal });
   };
 
-  public addVinylToCollection = async (
+  public toggleVinylOwner = async (
     req: VinylRequest,
     res: Response,
     next: NextFunction,
@@ -49,21 +49,11 @@ class VinylController implements VinylControllerStructure {
       return;
     }
 
-    if (vinyl.isOwned) {
-      const error = new ServerError(
-        409,
-        "This vinyl is already in the collection",
-      );
-      next(error);
-
-      return;
-    }
-
-    const ownedVinyl = await this.vinylModel
-      .findByIdAndUpdate(vinylId, { isOwned: "true" }, { new: true })
+    const updateVinyl = await this.vinylModel
+      .findByIdAndUpdate(vinylId, { isOwned: !vinyl.isOwned }, { new: true })
       .exec();
 
-    res.status(200).json({ vinyl: ownedVinyl });
+    res.status(200).json({ vinyl: updateVinyl });
   };
 }
 

@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 
 export interface VinylControllerStructure {
   getVinylsPage: (req: VinylRequest, res: Response) => Promise<void>;
-  addVinylToCollection: (
+  toggleVinylOwner: (
     req: VinylRequest,
     res: Response,
     next: NextFunction,
