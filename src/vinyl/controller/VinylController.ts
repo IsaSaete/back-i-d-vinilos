@@ -1,5 +1,5 @@
 import { NextFunction, Response } from "express";
-import mongoose, { Model } from "mongoose";
+import { Model } from "mongoose";
 import { VinylControllerStructure, VinylRequest } from "./types.js";
 import { VinylStructure } from "../types.js";
 import ServerError from "../../server/serverError/serverError.js";
@@ -38,16 +38,6 @@ class VinylController implements VinylControllerStructure {
     next: NextFunction,
   ): Promise<void> => {
     const vinylId = req.params.vinylId;
-
-    const isValidId = mongoose.isValidObjectId(vinylId);
-
-    if (!isValidId) {
-      const error = new ServerError(400, "Id not valid");
-
-      next(error);
-
-      return;
-    }
 
     const vinyl = await this.vinylModel.findById(vinylId).exec();
 
