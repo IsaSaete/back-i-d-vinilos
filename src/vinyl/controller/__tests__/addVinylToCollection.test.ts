@@ -1,11 +1,6 @@
 import { Model } from "mongoose";
 import { NextFunction, Response } from "express";
-import {
-  fromDeewee,
-  inColour,
-  inColourNotOwned,
-  marineroDeLuces,
-} from "../../fixtures.js";
+import { fromDeewee, inColour, inColourNotOwned } from "../../fixtures.js";
 import { VinylStructure } from "../../types.js";
 import { VinylRequest } from "../types.js";
 import VinylController from "../VinylController.js";
@@ -71,9 +66,9 @@ describe("Given the addVinylToCollection method of VinylController", () => {
     });
   });
 
-  describe("When it receives a request with Marinero de luces id that is not valid", () => {
+  describe("When it receives a From Deewee id vinyl that is already in the collection", () => {
     const req: Pick<VinylRequest, "params"> = {
-      params: { vinylId: marineroDeLuces._id },
+      params: { vinylId: fromDeewee._id },
     };
 
     const vinylModel: Pick<
@@ -81,15 +76,18 @@ describe("Given the addVinylToCollection method of VinylController", () => {
       "findById" | "findByIdAndUpdate"
     > = {
       findById: jest.fn().mockReturnValue({
-        exec: jest.fn().mockResolvedValue(marineroDeLuces),
+        exec: jest.fn().mockResolvedValue(fromDeewee),
       }),
       findByIdAndUpdate: jest.fn().mockReturnValue({
-        exec: jest.fn().mockResolvedValue(marineroDeLuces),
+        exec: jest.fn().mockResolvedValue(fromDeewee),
       }),
     };
 
-    test("Then it should call the received next method with 400, 'Id not valid' error", async () => {
-      const error = new ServerError(400, "Id not valid");
+    test("Then it should call the received next method with 409, 'This vinyl is already in the collection'", async () => {
+      const error = new ServerError(
+        409,
+        "This vinyl is already in the collection",
+      );
 
       const vinylController = new VinylController(
         vinylModel as Model<VinylStructure>,
@@ -99,75 +97,39 @@ describe("Given the addVinylToCollection method of VinylController", () => {
         res as Response,
         next as NextFunction,
       );
-
       expect(next).toHaveBeenCalledWith(error);
     });
+  });
 
-    describe("When it receives a From Deewee id vinyl that is already in the collection", () => {
-      const req: Pick<VinylRequest, "params"> = {
-        params: { vinylId: fromDeewee._id },
-      };
+  describe("When it receives a f7b34a4c8a6d9c05e3b7218a id that is not exist", () => {
+    const req: Pick<VinylRequest, "params"> = {
+      params: { vinylId: "f7b34a4c8a6d9c05e3b7218a" },
+    };
 
-      const vinylModel: Pick<
-        Model<VinylStructure>,
-        "findById" | "findByIdAndUpdate"
-      > = {
-        findById: jest.fn().mockReturnValue({
-          exec: jest.fn().mockResolvedValue(fromDeewee),
-        }),
-        findByIdAndUpdate: jest.fn().mockReturnValue({
-          exec: jest.fn().mockResolvedValue(fromDeewee),
-        }),
-      };
+    const vinylModel: Pick<
+      Model<VinylStructure>,
+      "findById" | "findByIdAndUpdate"
+    > = {
+      findById: jest.fn().mockReturnValue({
+        exec: jest.fn().mockResolvedValue(null),
+      }),
+      findByIdAndUpdate: jest.fn().mockReturnValue({
+        exec: jest.fn().mockResolvedValue(null),
+      }),
+    };
 
-      test("Then it should call the received next method with 409, 'This vinyl is already in the collection'", async () => {
-        const error = new ServerError(
-          409,
-          "This vinyl is already in the collection",
-        );
+    test("Then it should call the received next method with 404, 'This vinyl does not exist'", async () => {
+      const error = new ServerError(404, "This vinyl does not exist");
 
-        const vinylController = new VinylController(
-          vinylModel as Model<VinylStructure>,
-        );
-        await vinylController.addVinylToCollection(
-          req as VinylRequest,
-          res as Response,
-          next as NextFunction,
-        );
-        expect(next).toHaveBeenCalledWith(error);
-      });
-    });
-
-    describe("When it receives a f7b34a4c8a6d9c05e3b7218a id that is not exist", () => {
-      const req: Pick<VinylRequest, "params"> = {
-        params: { vinylId: "f7b34a4c8a6d9c05e3b7218a" },
-      };
-
-      const vinylModel: Pick<
-        Model<VinylStructure>,
-        "findById" | "findByIdAndUpdate"
-      > = {
-        findById: jest.fn().mockReturnValue({
-          exec: jest.fn().mockResolvedValue(null),
-        }),
-        findByIdAndUpdate: jest.fn().mockReturnValue({
-          exec: jest.fn().mockResolvedValue(null),
-        }),
-      };
-
-      test("Then it should call the received next method with 404, 'This vinyl does not exist'", async () => {
-        const error = new ServerError(404, "This vinyl does not exist");
-
-        const vinylController = new VinylController(
-          vinylModel as Model<VinylStructure>,
-        );
-        await vinylController.addVinylToCollection(
-          req as VinylRequest,
-          res as Response,
-          next as NextFunction,
-        );
-        expect(next).toHaveBeenCalledWith(error);
-      });
+      const vinylController = new VinylController(
+        vinylModel as Model<VinylStructure>,
+      );
+      await vinylController.addVinylToCollection(
+        req as VinylRequest,
+        res as Response,
+        next as NextFunction,
+      );
+      expect(next).toHaveBeenCalledWith(error);
     });
   });
 });
