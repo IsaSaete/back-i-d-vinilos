@@ -1,6 +1,6 @@
 import { NextFunction, Response } from "express";
-import { VinylRequest } from "../../../vinyl/controller/types.js";
 import mongoose from "mongoose";
+import { VinylRequest } from "../../../vinyl/controller/types.js";
 import ServerError from "../../serverError/serverError.js";
 
 const validateVinylId = async (
