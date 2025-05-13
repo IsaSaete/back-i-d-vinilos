@@ -15,7 +15,15 @@ export interface VinylStructure {
 
 export type VinylDto = Omit<VinylStructure, "_id">;
 
-export type GetVinylsResponseBody = {
+export interface GetVinylsResponseBody {
   vinyls: VinylStructure[];
   vinylsTotal: number;
-};
+}
+
+export interface ResponseBodyVinyl {
+  vinyl: VinylStructure;
+}
+
+export interface ResponsBodyError {
+  error: string;
+}
