@@ -22,7 +22,7 @@ afterAll(async () => {
   await server.stop();
 });
 
-describe("Given the PATCH /vinyls/add-to-collection/:vinylId endpoint", () => {
+describe("Given the PATCH /vinyls/toggle-owned/:vinylId endpoint", () => {
   describe("When it receives a request with a In Colour id vinyl that isn`t in collection", () => {
     test("Then it should respond with a status code 200 and the In Colour vinyl in the collection", async () => {
       const expectedStatus = 200;
@@ -30,7 +30,7 @@ describe("Given the PATCH /vinyls/add-to-collection/:vinylId endpoint", () => {
       await Vinyl.create(inColourNotOwned);
 
       const response = await request(app).patch(
-        `/vinyls/toggleOwner/${inColourNotOwned._id}`,
+        `/vinyls/toggle-owned/${inColourNotOwned._id}`,
       );
       const body = response.body as ResponseBodyVinyl;
 
@@ -44,7 +44,7 @@ describe("Given the PATCH /vinyls/add-to-collection/:vinylId endpoint", () => {
       const vinylIdNotValid = marineroDeLuces._id;
 
       const response = await request(app).patch(
-        `/vinyls/toggleOwner/${vinylIdNotValid}`,
+        `/vinyls/toggle-owned/${vinylIdNotValid}`,
       );
 
       const body = response.body as ResponsBodyError;

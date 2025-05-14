@@ -1,0 +1,101 @@
+{
+  "info": {
+    "_postman_id": "7a72d628-d603-4de9-9142-339f56cac8e7",
+    "name": "Vinyls",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43654694",
+    "_collection_link": "https://isa-5849595.postman.co/workspace/Isa's-Workspace~641ba071-3eaf-4e90-8392-53adc16c33d3/collection/43654694-7a72d628-d603-4de9-9142-339f56cac8e7?action=share&source=collection_link&creator=43654694"
+  },
+  "item": [
+    {
+      "name": "GET /vinyls",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/vinyls/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["vinyls", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PATCH /vinyls/toggle-owned/vinylId",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/vinyls/toggleOwned/681b2a6f326b00dff9a7dce0",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["vinyls", "toggleOwned", "681b2a6f326b00dff9a7dce0"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE /vinyls/:vinylId",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/vinyls/681b2a6f326b00dff9a7dce0",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["vinyls", "681b2a6f326b00dff9a7dce0"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST /vinyl",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/vinyl",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["vinyl"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET /vinyl/:vinylId",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/vinyls/681b2a6f326b00dff9a7dce0",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["vinyls", "681b2a6f326b00dff9a7dce0"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
