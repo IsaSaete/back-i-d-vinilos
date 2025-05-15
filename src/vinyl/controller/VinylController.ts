@@ -55,6 +55,28 @@ class VinylController implements VinylControllerStructure {
 
     res.status(200).json({ vinyl: updateVinyl });
   };
+
+  public deleteVinyl = async (
+    req: VinylRequest,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    const vinylId = req.params.vinylId;
+
+    const deleteVinyl = await this.vinylModel
+      .findOneAndDelete({ _id: vinylId })
+      .exec();
+
+    if (!deleteVinyl) {
+      const error = new ServerError(404, "This vinyl does not exist");
+
+      next(error);
+
+      return;
+    }
+
+    res.status(200).json({ vinyl: deleteVinyl });
+  };
 }
 
 export default VinylController;

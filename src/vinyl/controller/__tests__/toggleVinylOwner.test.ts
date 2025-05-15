@@ -15,7 +15,7 @@ beforeEach(() => {
   jest.clearAllMocks();
 });
 
-describe("Given the addVinylToCollection method of VinylController", () => {
+describe("Given the toggleVinylOwner method of VinylController", () => {
   const res: Pick<Response, "status" | "json"> = {
     status: jest.fn().mockReturnThis(),
     json: jest.fn(),
