@@ -1,6 +1,10 @@
 import { NextFunction, Response } from "express";
 import { Model } from "mongoose";
-import { VinylControllerStructure, VinylRequest } from "./types.js";
+import {
+  VinylControllerStructure,
+  VinylRequest,
+  VinylResponse,
+} from "./types.js";
 import { VinylStructure } from "../types.js";
 import ServerError from "../../server/serverError/serverError.js";
 
@@ -9,7 +13,7 @@ class VinylController implements VinylControllerStructure {
 
   public getVinylsPage = async (
     req: VinylRequest,
-    res: Response,
+    res: VinylResponse,
   ): Promise<void> => {
     let page = req.query.page;
 
@@ -37,7 +41,7 @@ class VinylController implements VinylControllerStructure {
     res: Response,
     next: NextFunction,
   ): Promise<void> => {
-    const vinylId = req.params.vinylId;
+    const { vinylId } = req.params;
 
     const vinyl = await this.vinylModel.findById(vinylId).exec();
 
