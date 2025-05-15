@@ -1,0 +1,45 @@
+{
+  "info": {
+    "_postman_id": "7a72d628-d603-4de9-9142-339f56cac8e7",
+    "name": "Vinyls",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43654694",
+    "_collection_link": "https://isa-5849595.postman.co/workspace/Isa's-Workspace~641ba071-3eaf-4e90-8392-53adc16c33d3/collection/43654694-7a72d628-d603-4de9-9142-339f56cac8e7?action=share&source=collection_link&creator=43654694"
+  },
+  "item": [
+    {
+      "name": "GET /vinyls",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://isabelsaenz-202502-back.onrender.com/vinyls",
+          "protocol": "https",
+          "host": ["isabelsaenz-202502-back", "onrender", "com"],
+          "path": ["vinyls"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PATCH /vinyls/toggle-owned/vinylId",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "https://isabelsaenz-202502-back.onrender.com/vinyls/toggle-owned/681b2a6f326b00dff9a7dce0",
+          "protocol": "https",
+          "host": ["isabelsaenz-202502-back", "onrender", "com"],
+          "path": ["vinyls", "toggle-owned", "681b2a6f326b00dff9a7dce0"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
