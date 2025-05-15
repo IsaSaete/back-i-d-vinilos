@@ -15,4 +15,6 @@ vinylRouter.patch(
   vinylController.toggleVinylOwner,
 );
 
+vinylRouter.delete("/:vinylId", validateVinylId, vinylController.deleteVinyl);
+
 export default vinylRouter;

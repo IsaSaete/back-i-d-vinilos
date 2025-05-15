@@ -33,10 +33,10 @@
         "method": "PATCH",
         "header": [],
         "url": {
-          "raw": "https://isabelsaenz-202502-back.onrender.com/vinyls/toggle-owned/681b2a6f326b00dff9a7dce0",
+          "raw": "https://isabelsaenz-202502-back.onrender.com/vinyls/toggle-owned/681b2a6f326b00dff9a7dcde",
           "protocol": "https",
           "host": ["isabelsaenz-202502-back", "onrender", "com"],
-          "path": ["vinyls", "toggle-owned", "681b2a6f326b00dff9a7dce0"]
+          "path": ["vinyls", "toggle-owned", "681b2a6f326b00dff9a7dcde"]
         }
       },
       "response": []
