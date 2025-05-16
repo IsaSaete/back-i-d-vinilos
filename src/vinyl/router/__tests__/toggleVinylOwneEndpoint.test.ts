@@ -6,6 +6,7 @@ import Vinyl from "../../model/vinyl.js";
 import { inColourNotOwned, marineroDeLuces } from "../../fixtures.js";
 import app from "../../../server/app.js";
 import { ResponsBodyError, ResponseBodyVinyl } from "../../types.js";
+import statusCodes from "../../../globals/statusCode.js";
 
 let server: MongoMemoryServer;
 
@@ -25,7 +26,7 @@ afterAll(async () => {
 describe("Given the PATCH /vinyls/toggle-owned/:vinylId endpoint", () => {
   describe("When it receives a request with a In Colour id vinyl that isn`t in collection", () => {
     test("Then it should respond with a status code 200 and the In Colour vinyl in the collection", async () => {
-      const expectedStatus = 200;
+      const expectedStatus = statusCodes.OK;
 
       await Vinyl.create(inColourNotOwned);
 
@@ -49,7 +50,7 @@ describe("Given the PATCH /vinyls/toggle-owned/:vinylId endpoint", () => {
 
       const body = response.body as ResponsBodyError;
 
-      expect(response.status).toBe(400);
+      expect(response.status).toBe(statusCodes.BAD_REQUEST);
       expect(body.error).toBe("Id not valid");
     });
   });

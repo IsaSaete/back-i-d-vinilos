@@ -10,6 +10,7 @@ import { VinylStructure } from "../../types.js";
 import { VinylRequest } from "../types.js";
 import VinylController from "../VinylController.js";
 import ServerError from "../../../server/serverError/serverError.js";
+import statusCodes from "../../../globals/statusCode.js";
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -41,7 +42,7 @@ describe("Given the toggleVinylOwner method of VinylController", () => {
     };
 
     test("Then is should call the received response's method status with 200", async () => {
-      const expectedStatus = 200;
+      const expectedStatus = statusCodes.OK;
 
       const vinylController = new VinylController(
         vinylModel as Model<VinylStructure>,
@@ -119,7 +120,10 @@ describe("Given the toggleVinylOwner method of VinylController", () => {
     };
 
     test("Then it should call the received next method with 404, 'This vinyl does not exist'", async () => {
-      const error = new ServerError(404, "This vinyl does not exist");
+      const error = new ServerError(
+        statusCodes.NOT_FOUND,
+        "This vinyl does not exist",
+      );
 
       const vinylController = new VinylController(
         vinylModel as Model<VinylStructure>,

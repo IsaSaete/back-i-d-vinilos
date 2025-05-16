@@ -30,7 +30,7 @@ This project implements the backend of an application to manage music vinyl reco
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/back-i-d.git
+git clone https://github.com/IsaSaete/back-i-d-vinilos.git
 cd back-i-d
 ```
 
@@ -166,7 +166,7 @@ The project uses a feature-based structure, clearly separating controllers, rout
 ```
 
 - **Error Responses:**
-  - `404 Not Found` if the vinyl does not exist
+  - `statusCode.NOT_FOUND Not Found` if the vinyl does not exist
   - `400 Bad Request` if `vinylId` is not a valid MongoDB ObjectId
 
 ### 3. Health Check
