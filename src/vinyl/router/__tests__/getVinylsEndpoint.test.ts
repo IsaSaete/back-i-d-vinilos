@@ -6,6 +6,7 @@ import Vinyl from "../../model/vinyl.js";
 import { mentalGroove, silentShout } from "../../fixturesDto.js";
 import app from "../../../server/app.js";
 import { GetVinylsResponseBody } from "../../types.js";
+import statusCodes from "../../../globals/statusCode.js";
 
 let server: MongoMemoryServer;
 
@@ -29,7 +30,7 @@ beforeEach(async () => {
 describe("Given the GET /vinyls endpoint", () => {
   describe("When it receives a request", () => {
     test("Then it should respond with a status code 200", async () => {
-      const expectedStatus = 200;
+      const expectedStatus = statusCodes.OK;
 
       await Vinyl.create(silentShout, mentalGroove);
 

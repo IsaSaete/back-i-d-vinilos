@@ -6,6 +6,7 @@ import connectToDatabase from "../../../database/connectToDatabase.js";
 import { spiritOfEden } from "../../fixtures.js";
 import app from "../../../server/app.js";
 import { ResponsBodyError, ResponseBodyVinyl } from "../../types.js";
+import statusCodes from "../../../globals/statusCode.js";
 
 let server: MongoMemoryServer;
 
@@ -25,7 +26,7 @@ afterAll(async () => {
 describe("Given the DELETE /vinyls/:vinylId endpoint", () => {
   describe("When it receives a request with a Spirit of Eden id that exists", () => {
     test("Then it should respond with a 200 status code and Spirit of Eden vinyl", async () => {
-      const expectedStatus = 200;
+      const expectedStatus = statusCodes.OK;
 
       await Vinyl.create(spiritOfEden);
 
@@ -41,7 +42,7 @@ describe("Given the DELETE /vinyls/:vinylId endpoint", () => {
     describe("When it receives a request  with '12345' id not valid", () => {
       test("Then it should call the received with a 400 status code and 'Id not valid' error message", async () => {
         const invalidId = "12345";
-        const expectedStatusCode = 400;
+        const expectedStatusCode = statusCodes.BAD_REQUEST;
         const expectedErrorMessage = "Id not valid";
 
         const response = await request(app).delete(`/vinyls/${invalidId}`);
@@ -55,7 +56,7 @@ describe("Given the DELETE /vinyls/:vinylId endpoint", () => {
     describe("When it receives a request with 1d3b8c7e9b04f6c2e718a4b5 id that isn't exists", () => {
       test("Then it should call the received with a 404 status code and 'This vinyl does not exist'", async () => {
         const falseId = "1d3b8c7e9b04f6c2e718a4b5";
-        const expectedStatus = 404;
+        const expectedStatus = statusCodes.NOT_FOUND;
         const expectedErrorMessage = "This vinyl does not exist";
 
         const response = await request(app).delete(`/vinyls/${falseId}`);

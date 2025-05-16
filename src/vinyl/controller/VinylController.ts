@@ -7,6 +7,7 @@ import {
 } from "./types.js";
 import { VinylStructure } from "../types.js";
 import ServerError from "../../server/serverError/serverError.js";
+import statusCodes from "../../globals/statusCode.js";
 
 class VinylController implements VinylControllerStructure {
   constructor(private readonly vinylModel: Model<VinylStructure>) {}
@@ -33,7 +34,7 @@ class VinylController implements VinylControllerStructure {
       .limit(vinylsByPage)
       .exec();
 
-    res.status(200).json({ vinyls, vinylsTotal });
+    res.status(statusCodes.OK).json({ vinyls, vinylsTotal });
   };
 
   public toggleVinylOwner = async (
@@ -46,7 +47,10 @@ class VinylController implements VinylControllerStructure {
     const vinyl = await this.vinylModel.findById(vinylId).exec();
 
     if (!vinyl) {
-      const error = new ServerError(404, "This vinyl does not exist");
+      const error = new ServerError(
+        statusCodes.NOT_FOUND,
+        "This vinyl does not exist",
+      );
 
       next(error);
 
@@ -57,7 +61,7 @@ class VinylController implements VinylControllerStructure {
       .findByIdAndUpdate(vinylId, { isOwned: !vinyl.isOwned }, { new: true })
       .exec();
 
-    res.status(200).json({ vinyl: updateVinyl });
+    res.status(statusCodes.OK).json({ vinyl: updateVinyl });
   };
 
   public deleteVinyl = async (
@@ -72,14 +76,17 @@ class VinylController implements VinylControllerStructure {
       .exec();
 
     if (!deleteVinyl) {
-      const error = new ServerError(404, "This vinyl does not exist");
+      const error = new ServerError(
+        statusCodes.NOT_FOUND,
+        "This vinyl does not exist",
+      );
 
       next(error);
 
       return;
     }
 
-    res.status(200).json({ vinyl: deleteVinyl });
+    res.status(statusCodes.OK).json({ vinyl: deleteVinyl });
   };
 }
 

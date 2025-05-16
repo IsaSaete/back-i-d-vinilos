@@ -3,13 +3,11 @@ import { VinylStructure } from "../types.js";
 
 export interface VinylControllerStructure {
   getVinylsPage: (req: VinylRequest, res: VinylResponse) => Promise<void>;
-
   toggleVinylOwner: (
     req: VinylRequest,
     res: Response,
     next: NextFunction,
   ) => Promise<void>;
-
   deleteVinyl: (
     req: VinylRequest,
     res: Response,
@@ -28,9 +26,9 @@ export type VinylRequest = Request<
   VinylQuery
 >;
 
+export type VinylResponse = Response<VinylBodyResponse>;
+
 export type VinylBodyResponse = {
   vinyls: VinylStructure[];
   vinylsTotal: number;
 };
-
-export type VinylResponse = Response<VinylBodyResponse>;

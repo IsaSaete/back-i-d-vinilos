@@ -4,6 +4,7 @@ import { VinylRequest } from "../types.js";
 import { VinylStructure } from "../../types.js";
 import { vinylsFixtures } from "../../fixtures.js";
 import VinylController from "../VinylController.js";
+import statusCodes from "../../../globals/statusCode.js";
 
 let vinyls = [...vinylsFixtures];
 
@@ -35,7 +36,7 @@ describe("Given the getVinylsPage method of VinylController", () => {
     };
 
     test("Then it should call the response's mehtod with a status 200", async () => {
-      const expectedStatus = 200;
+      const expectedStatus = statusCodes.OK;
 
       const vinylController = new VinylController(
         vinylModel as Model<VinylStructure>,

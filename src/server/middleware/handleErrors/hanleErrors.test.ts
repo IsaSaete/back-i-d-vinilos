@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import ServerError from "../../serverError/serverError.js";
 import handleErrors from "./handleErrors.js";
+import statusCodes from "../../../globals/statusCode.js";
 
 describe("Given the handleErrors middleware", () => {
   const req = {} as Request;
@@ -35,7 +36,7 @@ describe("Given the handleErrors middleware", () => {
     const error = new Error("Can't read properties of undefined");
 
     test("Then it should call the response's method status with 500", () => {
-      const expectedStatus = 500;
+      const expectedStatus = statusCodes.INTERNAL_SERVER_ERROR;
 
       handleErrors(error as ServerError, req, res as Response, next);
 
