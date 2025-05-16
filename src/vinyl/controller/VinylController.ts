@@ -1,9 +1,10 @@
-import { NextFunction, Response } from "express";
+import { NextFunction } from "express";
 import { Model } from "mongoose";
 import {
   VinylControllerStructure,
   VinylRequest,
   VinylResponse,
+  VinylsResponse,
 } from "./types.js";
 import { VinylStructure } from "../types.js";
 import ServerError from "../../server/serverError/serverError.js";
@@ -14,7 +15,7 @@ class VinylController implements VinylControllerStructure {
 
   public getVinylsPage = async (
     req: VinylRequest,
-    res: VinylResponse,
+    res: VinylsResponse,
   ): Promise<void> => {
     let page = req.query.page;
 
@@ -39,7 +40,7 @@ class VinylController implements VinylControllerStructure {
 
   public toggleVinylOwner = async (
     req: VinylRequest,
-    res: Response,
+    res: VinylResponse,
     next: NextFunction,
   ): Promise<void> => {
     const { vinylId } = req.params;
@@ -61,12 +62,12 @@ class VinylController implements VinylControllerStructure {
       .findByIdAndUpdate(vinylId, { isOwned: !vinyl.isOwned }, { new: true })
       .exec();
 
-    res.status(statusCodes.OK).json({ vinyl: updateVinyl });
+    res.status(statusCodes.OK).json({ vinyl: updateVinyl! });
   };
 
   public deleteVinyl = async (
     req: VinylRequest,
-    res: Response,
+    res: VinylResponse,
     next: NextFunction,
   ): Promise<void> => {
     const vinylId = req.params.vinylId;
@@ -87,6 +88,33 @@ class VinylController implements VinylControllerStructure {
     }
 
     res.status(statusCodes.OK).json({ vinyl: deleteVinyl });
+  };
+
+  public addVinyl = async (
+    req: VinylRequest,
+    res: VinylResponse,
+    next: NextFunction,
+  ): Promise<void> => {
+    const { vinyl } = req.body;
+
+    const vinylExists = await this.vinylModel
+      .findOne({ title: vinyl.title })
+      .exec();
+
+    if (vinylExists) {
+      const error = new ServerError(
+        statusCodes.CONFLICT,
+        "This vinyl already exists",
+      );
+
+      next(error);
+
+      return;
+    }
+
+    const newVinyl = await this.vinylModel.insertOne(vinyl);
+
+    res.status(statusCodes.CREATED).json({ vinyl: newVinyl });
   };
 }
 
