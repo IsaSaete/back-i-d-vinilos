@@ -1,4 +1,4 @@
-import { VinylStructure } from "./types.js";
+import { VinylData, VinylStructure } from "./types.js";
 
 export const strangeWeather: VinylStructure = {
   _id: "a3f9d7c2e5b8147ad09c3e1f",
@@ -233,3 +233,45 @@ export const vinylsFixtures: VinylStructure[] = [
   awakeningsLive,
   internalEmpire,
 ];
+
+export const leftism: VinylStructure = {
+  _id: "8f4a2b9d1c7e4f3a9b2d567e",
+  title: "Leftism",
+  artist: "Leftfield",
+  country: "UK",
+  releaseDate: new Date("1995-11-20"),
+  genre: "Electronic",
+  format: "12''",
+  coverImageUrl: "https://example.com/leftfield-leftism.jpg",
+  styles: ["Progressive House", "Techno", "Electronica"],
+  notes:
+    "Con 'Leftism', Leftfield redefine la música electrónica de los 90 con su mezcla innovadora de house progresivo y techno.",
+  isOwned: false,
+};
+
+export const leftismVinyl: VinylData = {
+  title: "Leftism",
+  artist: "Leftfield",
+  country: "UK",
+  releaseDate: "1995-11-20",
+  genre: "Electronic",
+  format: "12''",
+  coverImageUrl: "https://example.com/leftfield-leftism.jpg",
+  styles: ["Progressive House", "Techno", "Electronica"],
+  notes:
+    "Con 'Leftism', Leftfield redefine la música electrónica de los 90 con su mezcla innovadora de house progresivo y techno.",
+  isOwned: false,
+};
+
+export const fromDeeweeVinyl: VinylData = {
+  title: "From Deewee",
+  artist: "Soulwax",
+  country: "Belgium",
+  releaseDate: "2017-03-24",
+  genre: "Electro Rock",
+  format: "12''",
+  coverImageUrl: "https://example.com/from-deewee.jpg",
+  styles: ["Synth-pop", "Techno Rock"],
+  purchasedAt: "Vinyl Dreams, San Francisco",
+  isOwned: true,
+};

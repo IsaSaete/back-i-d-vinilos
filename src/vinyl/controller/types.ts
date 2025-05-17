@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { Vinyl, VinylStructure } from "../types.js";
+import { VinylData, VinylStructure } from "../types.js";
 
 export interface VinylControllerStructure {
   getVinylsPage: (req: VinylRequest, res: VinylsResponse) => Promise<void>;
@@ -24,7 +24,7 @@ export type VinylQuery = { page: string };
 
 export type VinylParams = { vinylId: string };
 
-export type VinylBody = { vinyl: Vinyl };
+export type VinylBody = { vinyl: VinylData };
 
 export type VinylRequest = Request<
   VinylParams,

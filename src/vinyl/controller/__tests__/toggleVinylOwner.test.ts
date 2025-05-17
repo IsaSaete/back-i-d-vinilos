@@ -119,7 +119,7 @@ describe("Given the toggleVinylOwner method of VinylController", () => {
       }),
     };
 
-    test("Then it should call the received next method with 404, 'This vinyl does not exist'", async () => {
+    test("Then it should call the next function with 404, 'This vinyl does not exist'", async () => {
       const error = new ServerError(
         statusCodes.NOT_FOUND,
         "This vinyl does not exist",
