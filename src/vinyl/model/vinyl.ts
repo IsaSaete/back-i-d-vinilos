@@ -7,7 +7,7 @@ const vinylSchema = new Schema<VinylStructure>({
   country: { type: String, required: true },
   releaseDate: { type: Date, required: true },
   genre: { type: String, required: true },
-  format: { type: String, enum: ['12"', '7"'], required: true },
+  format: { type: String, enum: ["12''", "7''"], required: true },
   coverImageUrl: { type: String, required: true },
   styles: { type: [String], maxlength: 3 },
   purchasedAt: { type: String },

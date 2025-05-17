@@ -5,13 +5,17 @@ export interface VinylStructure {
   country: string;
   releaseDate: Date;
   genre: string;
-  format: string;
+  format: "12''" | "7''";
   coverImageUrl: string;
   styles?: string[];
   purchasedAt?: string;
   notes?: string;
   isOwned: boolean;
 }
+
+export type VinylData = Omit<VinylStructure, "_id" | "releaseDate"> & {
+  releaseDate: string;
+};
 
 export type VinylDto = Omit<VinylStructure, "_id">;
 
