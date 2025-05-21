@@ -9,6 +9,8 @@ const vinylController = new VinylController(Vinyl);
 
 vinylRouter.get("/", vinylController.getVinylsPage);
 
+vinylRouter.get("/:vinylId", validateVinylId, vinylController.getVinylById);
+
 vinylRouter.patch(
   "/toggle-owned/:vinylId",
   validateVinylId,

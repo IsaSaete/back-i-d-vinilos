@@ -75,6 +75,7 @@ npm start
 | PATCH  | `/vinyls/toggle-owned/:vinylId` | Toggles the `isOwned` state of a vinyl. |
 | DELETE | `/vinyls/:vinylId`              | Deletes a vinyl by its ID.              |
 | POST   | `/vinyls`                       | Adds a new vinyl to the database.       |
+| GET    | `/vinyls/:vinylId`              | Get vinyl by ID                         |
 
 ---
 
@@ -169,9 +170,10 @@ Status: 200 OK
 }
 ```
 
-- **Error Responses:**
-  - `statusCode.NOT_FOUND Not Found` if the vinyl does not exist
-  - `400 Bad Request` if `vinylId` is not a valid MongoDB ObjectId
+- **Possible Errors:**
+  - `400 Bad Request`: Id not valid
+  - `409 Conflict`: If the vinyl already exists
+  - `404 Not Found`: If the vinyl does not exist
 
 ### 🗑 DELETE /vinyls/:vinylId
 
@@ -198,6 +200,7 @@ Status: 200 OK
 ```
 
 - **Possible Errors:**
+  - `400 Bad Request`: Id not valid
   - `404 Not Found`: If the vinyl does not exist
 
 ---
@@ -237,6 +240,39 @@ Status: 201 Created
 
 - **Possible Errors:**
   - `409 Conflict`: If the vinyl already exists
+
+---
+
+### 🔍 GET /vinyls/:vinylId
+
+Retrieves a single vinyl by its ID.
+
+- **URL:** `/vinyls/:vinylId`
+- **Method:** `GET`
+- **Params:**
+  - `vinylId`: ID of the vinyl to retrieve
+- **Response:**
+
+```json
+Status: 200 OK
+{
+  "vinyl": {
+    "_id": "6643e61db6c99acbce993c3f",
+    "title": "Kind of Blue",
+    "artist": "Miles Davis",
+    "year": 1959,
+    "isOwned": true,
+    "coverUrl": "https://example.com/kind-of-blue.jpg"
+  }
+}
+```
+
+- **Possible Errors:**
+  - `400 Bad Request`: Id not valid
+  - `409 Conflict`: If the vinyl already exists
+  - `404 Not Found`: If the vinyl does not exist
+
+---
 
 ### 🏓 Health Check
 
