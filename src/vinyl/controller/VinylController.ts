@@ -70,7 +70,7 @@ class VinylController implements VinylControllerStructure {
     res: VinylResponse,
     next: NextFunction,
   ): Promise<void> => {
-    const vinylId = req.params.vinylId;
+    const { vinylId } = req.params;
 
     const deleteVinyl = await this.vinylModel
       .findOneAndDelete({ _id: vinylId })
@@ -115,6 +115,28 @@ class VinylController implements VinylControllerStructure {
     const newVinyl = await this.vinylModel.insertOne(vinyl);
 
     res.status(statusCodes.CREATED).json({ vinyl: newVinyl });
+  };
+
+  public getVinylById = async (
+    req: VinylRequest,
+    res: VinylResponse,
+    next: NextFunction,
+  ): Promise<void> => {
+    const { vinylId } = req.params;
+
+    const foundVinyl = await this.vinylModel.findById(vinylId).exec();
+
+    if (!foundVinyl) {
+      const error = new ServerError(
+        statusCodes.NOT_FOUND,
+        "This vinyl does not exist",
+      );
+
+      next(error);
+
+      return;
+    }
+    res.status(statusCodes.OK).json({ vinyl: foundVinyl });
   };
 }
 
