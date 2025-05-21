@@ -18,6 +18,11 @@ export interface VinylControllerStructure {
     res: VinylResponse,
     next: NextFunction,
   ) => Promise<void>;
+  getVinylById: (
+    req: VinylRequest,
+    res: VinylResponse,
+    next: NextFunction,
+  ) => Promise<void>;
 }
 
 export type VinylQuery = { page: string };

@@ -73,6 +73,8 @@ npm start
 | ------ | ------------------------------- | --------------------------------------- |
 | GET    | `/vinyls`                       | Retrieves a paginated list of vinyls.   |
 | PATCH  | `/vinyls/toggle-owned/:vinylId` | Toggles the `isOwned` state of a vinyl. |
+| DELETE | `/vinyls/:vinylId`              | Deletes a vinyl by its ID.              |
+| POST   | `/vinyls`                       | Adds a new vinyl to the database.       |
 
 ---
 
@@ -114,19 +116,20 @@ The project uses a feature-based structure, clearly separating controllers, rout
 
 ---
 
-## API Endpoints
+## 🎧 API Endpoints - Vinyls
 
-### 1. Get Vinyls (Paginated)
+### 📄 GET /vinyls
 
+Retrieves a paginated list of vinyls sorted by artist name.
+
+- **URL:** `/vinyls?page=<number>`
 - **Method:** `GET`
-- **URL:** `/vinyls`
-- **Description:** Retrieves a paginated list of vinyl records sorted by artist name.
 - **Query Parameters:**
-  - `page` (optional, default: `1`) – Page number for pagination.
-- **Request Body:** _None_
+  - `page` _(optional)_: Page number (defaults to `1`)
 - **Response:**
 
 ```json
+Status: 200 OK
 {
   "vinyls": [
     {
@@ -142,7 +145,7 @@ The project uses a feature-based structure, clearly separating controllers, rout
 }
 ```
 
-### 2. Toggle Vinyl Ownership
+### 🔄 PATCH /vinyls/toggle-owned/:vinylId
 
 - **Method:** `PATCH`
 - **URL:** `/vinyls/toggle-owned/:vinylId`
@@ -153,6 +156,7 @@ The project uses a feature-based structure, clearly separating controllers, rout
 - **Response:**
 
 ```json
+Status: 200 OK
 {
   "vinyl": {
     "_id": "6643e61db6c99acbce993c3f",
@@ -169,7 +173,72 @@ The project uses a feature-based structure, clearly separating controllers, rout
   - `statusCode.NOT_FOUND Not Found` if the vinyl does not exist
   - `400 Bad Request` if `vinylId` is not a valid MongoDB ObjectId
 
-### 3. Health Check
+### 🗑 DELETE /vinyls/:vinylId
+
+Deletes a vinyl by its ID.
+
+- **URL:** `/vinyls/:vinylId`
+- **Method:** `DELETE`
+- **Params:**
+  - `vinylId`: ID of the vinyl to delete
+- **Response:**
+
+```json
+Status: 200 OK
+{
+  "vinyl": {
+    "_id": "6643e61db6c99acbce993c3f",
+    "title": "Kind of Blue",
+    "artist": "Miles Davis",
+    "year": 1959,
+    "isOwned": true,
+    "coverUrl": "https://example.com/kind-of-blue.jpg"
+  }
+}
+```
+
+- **Possible Errors:**
+  - `404 Not Found`: If the vinyl does not exist
+
+---
+
+### ➕ POST /vinyls
+
+Adds a new vinyl to the database.
+
+- **URL:** `/vinyls`
+- **Method:** `POST`
+- **Body:**
+
+```json
+{
+  "vinyl": {
+    "title": "New Vinyl",
+    "artist": "Artist Name",
+    "genre": "Rock",
+    "isOwned": false,
+    ...
+  }
+}
+```
+
+- **Response:**
+
+```json
+Status: 201 Created
+{
+  "vinyl": {
+    "_id": "456def",
+    "title": "New Vinyl",
+    ...
+  }
+}
+```
+
+- **Possible Errors:**
+  - `409 Conflict`: If the vinyl already exists
+
+### 🏓 Health Check
 
 - **Method:** `GET`
 - **URL:** `/health`
@@ -182,7 +251,7 @@ The project uses a feature-based structure, clearly separating controllers, rout
 }
 ```
 
-### 4. Not Found Handler
+### 🔎 Not Found Handler
 
 - **Description:** Triggered when a request is made to an undefined endpoint.
 - **Response:**
@@ -193,7 +262,7 @@ The project uses a feature-based structure, clearly separating controllers, rout
 }
 ```
 
-### 5. Error Handler (Middleware)
+### ❌ Error Handler (Middleware)
 
 - **Description:** Catches and handles server-side errors.
 - **Error Response Example:**
