@@ -47,7 +47,7 @@ describe("Given the addVinyl method", () => {
         next as NextFunction,
       );
 
-      expect(res.status).toHaveBeenLastCalledWith(201);
+      expect(res.status).toHaveBeenCalledWith(201);
     });
 
     test("Then it should call the response's method json with Leftism vinyl", async () => {
