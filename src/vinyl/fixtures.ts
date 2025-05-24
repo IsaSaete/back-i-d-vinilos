@@ -47,6 +47,22 @@ export const spiritOfEden: VinylStructure = {
   isOwned: true,
 };
 
+export const newSpiritOfEden: VinylStructure = {
+  _id: "1d3a8c7e9b04f6c2e718a4b5",
+  title: "Spirit of Eden",
+  artist: "Talk Talk",
+  country: "UK",
+  releaseDate: new Date("1988-09-12"),
+  genre: "Post-rock",
+  format: "12''",
+  coverImageUrl: "https://example.com/spirit-of-eden.jpg",
+  styles: ["Art Rock", "Experimental"],
+  purchasedAt: "Discogs",
+  notes:
+    "El sonido experimental y la negativa por parte de Mark Hollis para promocionar el material, causó conflictos legales entre la banda y su sello discográfico EMI.",
+  isOwned: true,
+};
+
 export const inColour: VinylStructure = {
   _id: "f7b13e4c8a6d9c05e3b7218a",
   title: "In Colour",
@@ -253,7 +269,7 @@ export const leftismVinyl: VinylData = {
   title: "Leftism",
   artist: "Leftfield",
   country: "UK",
-  releaseDate: "1995-11-20",
+  releaseDate: new Date("1995-11-20"),
   genre: "Electronic",
   format: "12''",
   coverImageUrl: "https://example.com/leftfield-leftism.jpg",
@@ -267,7 +283,7 @@ export const fromDeeweeVinyl: VinylData = {
   title: "From Deewee",
   artist: "Soulwax",
   country: "Belgium",
-  releaseDate: "2017-03-24",
+  releaseDate: new Date("2017-03-24"),
   genre: "Electro Rock",
   format: "12''",
   coverImageUrl: "https://example.com/from-deewee.jpg",

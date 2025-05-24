@@ -13,9 +13,7 @@ export interface VinylStructure {
   isOwned: boolean;
 }
 
-export type VinylData = Omit<VinylStructure, "_id" | "releaseDate"> & {
-  releaseDate: string;
-};
+export type VinylData = Omit<VinylStructure, "_id">;
 
 export type VinylDto = Omit<VinylStructure, "_id">;
 
