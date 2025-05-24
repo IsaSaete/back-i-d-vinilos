@@ -21,4 +21,6 @@ vinylRouter.delete("/:vinylId", validateVinylId, vinylController.deleteVinyl);
 
 vinylRouter.post("/", vinylController.addVinyl);
 
+vinylRouter.put("/:vinylId", validateVinylId, vinylController.updateVinyl);
+
 export default vinylRouter;
