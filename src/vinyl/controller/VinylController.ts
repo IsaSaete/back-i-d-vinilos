@@ -138,6 +138,32 @@ class VinylController implements VinylControllerStructure {
     }
     res.status(statusCodes.OK).json({ vinyl: foundVinyl });
   };
+
+  public updateVinyl = async (
+    req: VinylRequest,
+    res: VinylResponse,
+    next: NextFunction,
+  ): Promise<void> => {
+    const { vinylId } = req.params;
+    const { vinyl: vinylData } = req.body;
+
+    const updatedVinyl = await this.vinylModel
+      .findOneAndUpdate({ _id: vinylId }, vinylData, { new: true })
+      .exec();
+
+    if (!updatedVinyl) {
+      const error = new ServerError(
+        statusCodes.NOT_FOUND,
+        "This vinyl does not exist",
+      );
+
+      next(error);
+
+      return;
+    }
+
+    res.status(statusCodes.OK).json({ vinyl: updatedVinyl });
+  };
 }
 
 export default VinylController;
