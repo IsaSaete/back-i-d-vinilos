@@ -291,3 +291,19 @@ export const fromDeeweeVinyl: VinylData = {
   purchasedAt: "Vinyl Dreams, San Francisco",
   isOwned: true,
 };
+
+export const dileAlSol: VinylStructure = {
+  _id: "8f4a2b9d1c7e4f3a9b2d567f",
+  title: "Dile al sol",
+  artist: "La Oreja de Van Gogh",
+  country: "Spain",
+  releaseDate: new Date("1998-05-18"),
+  genre: "Pop Rock",
+  format: "12''",
+  coverImageUrl:
+    "https://upload.wikimedia.org/wikipedia/en/5/5e/Dile_al_sol.jpg",
+  styles: ["Pop", "Soft Rock", "Latin Pop"],
+  purchasedAt: "Discos Tesla, Madrid",
+  notes: "Álbum debut con tintes nostálgicos y melodías pegadizas.",
+  isOwned: true,
+};

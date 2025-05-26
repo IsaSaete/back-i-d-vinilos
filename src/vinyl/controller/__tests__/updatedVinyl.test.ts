@@ -1,7 +1,6 @@
 import { Model } from "mongoose";
 import { NextFunction, Response } from "express";
-import { newSpiritOfEden, spiritOfEden } from "../../fixtures.js";
-import { dileAlSol, spiritOfEdenData } from "../../fixturesDto.js";
+import { dileAlSol, newSpiritOfEden, spiritOfEden } from "../../fixtures.js";
 import { VinylRequest, VinylResponse } from "../types.js";
 import { VinylStructure } from "../../types.js";
 import VinylController from "../VinylController.js";
@@ -23,7 +22,7 @@ describe("Given the updateVinyl method of VinylController", () => {
   describe("When it receives an Spirit of Eden vinyl new data and its id", () => {
     const req: Pick<VinylRequest, "params" | "body"> = {
       params: { vinylId: spiritOfEden._id },
-      body: { vinyl: spiritOfEdenData },
+      body: { vinyl: spiritOfEden },
     };
 
     const vinylModel: Pick<

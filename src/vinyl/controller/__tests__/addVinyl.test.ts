@@ -8,7 +8,7 @@ import {
   leftismVinyl,
 } from "../../fixtures.js";
 import VinylController from "../VinylController.js";
-import { VinylRequest, VinylResponse } from "../types.js";
+import { NewVinylRequest, VinylResponse } from "../types.js";
 import ServerError from "../../../server/serverError/serverError.js";
 import statusCodes from "../../../globals/statusCode.js";
 
@@ -25,7 +25,7 @@ describe("Given the addVinyl method", () => {
   const next = jest.fn();
 
   describe("When it receives a 'Leftism' vinyl Data", () => {
-    const req: Pick<VinylRequest, "body"> = {
+    const req: Pick<NewVinylRequest, "body"> = {
       body: { vinyl: leftismVinyl },
     };
 
@@ -42,7 +42,7 @@ describe("Given the addVinyl method", () => {
       );
 
       await vinylController.addVinyl(
-        req as VinylRequest,
+        req as NewVinylRequest,
         res as VinylResponse,
         next as NextFunction,
       );
@@ -56,7 +56,7 @@ describe("Given the addVinyl method", () => {
       );
 
       await vinylController.addVinyl(
-        req as VinylRequest,
+        req as NewVinylRequest,
         res as VinylResponse,
         next as NextFunction,
       );
@@ -66,7 +66,7 @@ describe("Given the addVinyl method", () => {
   });
 
   describe("When it receives a From Deewee vinyl Data that it's already exists", () => {
-    const req: Pick<VinylRequest, "body"> = {
+    const req: Pick<NewVinylRequest, "body"> = {
       body: { vinyl: fromDeeweeVinyl },
     };
 
@@ -86,7 +86,7 @@ describe("Given the addVinyl method", () => {
       );
 
       await vinylController.addVinyl(
-        req as VinylRequest,
+        req as NewVinylRequest,
         res as VinylResponse,
         next as NextFunction,
       );

@@ -5,9 +5,9 @@ import connectToDatabase from "../../../database/connectToDatabase.js";
 import statusCodes from "../../../globals/statusCode.js";
 import app from "../../../server/app.js";
 import { VinylBodyResponse } from "../../controller/types.js";
-import { dileAlSol, spiritOfEdenData } from "../../fixturesDto.js";
+import { spiritOfEdenData } from "../../fixturesDto.js";
 import Vinyl from "../../model/vinyl.js";
-import { spiritOfEden } from "../../fixtures.js";
+import { dileAlSol, spiritOfEden } from "../../fixtures.js";
 import { ResponsBodyError } from "../../types.js";
 
 let server: MongoMemoryServer;

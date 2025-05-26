@@ -34,7 +34,7 @@ export type VinylQuery = { page: string };
 
 export type VinylParams = { vinylId: string };
 
-export type VinylBody = { vinyl: VinylData };
+export type VinylBody = { vinyl: VinylStructure };
 
 export type VinylRequest = Request<
   VinylParams,
@@ -47,6 +47,15 @@ export type VinylsResponse = Response<VinylsBodyResponse>;
 
 export type VinylResponse = Response<VinylBodyResponse>;
 
+export type NewVinylBody = { vinyl: VinylData };
+
+export type NewVinylRequest = Request<
+  Record<string, unknown>,
+  Record<string, unknown>,
+  NewVinylBody,
+  Record<string, unknown>
+>;
+
 export type VinylBodyResponse = {
   vinyl: VinylStructure;
 };
@@ -55,3 +64,10 @@ export type VinylsBodyResponse = {
   vinyls: VinylStructure[];
   vinylsTotal: number;
 };
+
+export type ValidateIdRequest = Request<
+  VinylParams,
+  Record<string, unknown>,
+  Record<string, unknown>,
+  Record<string, unknown>
+>;
