@@ -26,8 +26,14 @@ describe("Given the updateVinyl method of VinylController", () => {
       body: { vinyl: spiritOfEdenData },
     };
 
-    const vinylModel: Pick<Model<VinylStructure>, "findOneAndUpdate"> = {
-      findOneAndUpdate: jest.fn().mockReturnValue({
+    const vinylModel: Pick<
+      Model<VinylStructure>,
+      "findById" | "findOneAndReplace"
+    > = {
+      findById: jest
+        .fn()
+        .mockReturnValue({ exec: jest.fn().mockResolvedValue(spiritOfEden) }),
+      findOneAndReplace: jest.fn().mockReturnValue({
         exec: jest.fn().mockResolvedValue(newSpiritOfEden),
       }),
     };
@@ -67,8 +73,8 @@ describe("Given the updateVinyl method of VinylController", () => {
       body: { vinyl: dileAlSol },
     };
 
-    const vinylModel: Pick<Model<VinylStructure>, "findOneAndUpdate"> = {
-      findOneAndUpdate: jest.fn().mockReturnValue({
+    const vinylModel: Pick<Model<VinylStructure>, "findById"> = {
+      findById: jest.fn().mockReturnValue({
         exec: jest.fn().mockResolvedValue(null),
       }),
     };
