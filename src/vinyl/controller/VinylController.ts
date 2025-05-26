@@ -1,6 +1,7 @@
 import { NextFunction } from "express";
 import { Model } from "mongoose";
 import {
+  NewVinylRequest,
   VinylControllerStructure,
   VinylRequest,
   VinylResponse,
@@ -91,14 +92,14 @@ class VinylController implements VinylControllerStructure {
   };
 
   public addVinyl = async (
-    req: VinylRequest,
+    req: NewVinylRequest,
     res: VinylResponse,
     next: NextFunction,
   ): Promise<void> => {
-    const { vinyl } = req.body;
+    const { vinyl: vinylData } = req.body;
 
     const vinylExists = await this.vinylModel
-      .findOne({ title: vinyl.title })
+      .findOne({ title: vinylData.title })
       .exec();
 
     if (vinylExists) {
@@ -112,7 +113,7 @@ class VinylController implements VinylControllerStructure {
       return;
     }
 
-    const newVinyl = await this.vinylModel.insertOne(vinyl);
+    const newVinyl = await this.vinylModel.insertOne(vinylData);
 
     res.status(statusCodes.CREATED).json({ vinyl: newVinyl });
   };
@@ -148,10 +149,6 @@ class VinylController implements VinylControllerStructure {
     const { vinyl: vinylData } = req.body;
 
     const vinylFound = await this.vinylModel.findById(vinylId).exec();
-
-    /* const updatedVinyl = await this.vinylModel
-      .findOneAndUpdate({ _id: vinylId }, vinylData, { new: true })
-      .exec(); */
 
     if (!vinylFound) {
       const error = new ServerError(

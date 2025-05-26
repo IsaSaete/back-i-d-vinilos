@@ -1,11 +1,11 @@
 import { NextFunction, Response } from "express";
 import mongoose from "mongoose";
-import { VinylRequest } from "../../../vinyl/controller/types.js";
+import { ValidateIdRequest } from "../../../vinyl/controller/types.js";
 import ServerError from "../../serverError/serverError.js";
 import statusCodes from "../../../globals/statusCode.js";
 
 const validateVinylId = async (
-  req: VinylRequest,
+  req: ValidateIdRequest,
   _res: Response,
   next: NextFunction,
 ): Promise<void> => {
