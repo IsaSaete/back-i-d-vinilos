@@ -147,11 +147,13 @@ class VinylController implements VinylControllerStructure {
     const { vinylId } = req.params;
     const { vinyl: vinylData } = req.body;
 
-    const updatedVinyl = await this.vinylModel
-      .findOneAndUpdate({ _id: vinylId }, vinylData, { new: true })
-      .exec();
+    const vinylFound = await this.vinylModel.findById(vinylId).exec();
 
-    if (!updatedVinyl) {
+    /* const updatedVinyl = await this.vinylModel
+      .findOneAndUpdate({ _id: vinylId }, vinylData, { new: true })
+      .exec(); */
+
+    if (!vinylFound) {
       const error = new ServerError(
         statusCodes.NOT_FOUND,
         "This vinyl does not exist",
@@ -162,7 +164,11 @@ class VinylController implements VinylControllerStructure {
       return;
     }
 
-    res.status(statusCodes.OK).json({ vinyl: updatedVinyl });
+    const updatedVinyl = await this.vinylModel
+      .findOneAndReplace({ _id: vinylId }, vinylData, { new: true })
+      .exec();
+
+    res.status(statusCodes.OK).json({ vinyl: updatedVinyl! });
   };
 }
 
