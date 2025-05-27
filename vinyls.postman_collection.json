@@ -189,6 +189,104 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "PUT /vinyls ",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"vinyl\": {\n        \"_id\": \"683351429f70af44ac6dbb82\",\n        \"title\": \"Gangbusters Melody Club\",\n        \"artist\": \"Caravan Palace\",\n        \"country\": \"France\",\n        \"releaseDate\": \"2025-03-15T00:00:00.000Z\",\n        \"genre\": \"Electro Swing\",\n        \"format\": \"12''\",\n        \"coverImageUrl\": \"https://i.ibb.co/RGzp40m0/caravan-palace.webp\",\n        \"styles\": [\n            \"Swing\",\n            \"Electronic\"\n        ],\n        \"purchasedAt\": \"FNAC, París\",\n        \"notes\": \"Fusión de swing y electrónica con ritmos bailables.\",\n        \"isOwned\": true\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://isabelsaenz-202502-back.onrender.com/vinyls/683351429f70af44ac6dbb82",
+          "protocol": "https",
+          "host": ["isabelsaenz-202502-back", "onrender", "com"],
+          "path": ["vinyls", "683351429f70af44ac6dbb82"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT /vinyls error 400",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "https://isabelsaenz-202502-back.onrender.com/vinyls/683351429f70af44ac6dbb8x",
+          "protocol": "https",
+          "host": ["isabelsaenz-202502-back", "onrender", "com"],
+          "path": ["vinyls", "683351429f70af44ac6dbb8x"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT /vinyls error 404",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"vinyl\": {\n        \"_id\": \"683351429f70af44ac6dbb82\",\n        \"title\": \"Gangbusters Melody Club\",\n        \"artist\": \"Caravan Palace\",\n        \"country\": \"France\",\n        \"releaseDate\": \"2025-03-15T00:00:00.000Z\",\n        \"genre\": \"Electro Swing\",\n        \"format\": \"12''\",\n        \"coverImageUrl\": \"https://i.ibb.co/RGzp40m0/caravan-palace.webp\",\n        \"styles\": [\n            \"Swing\",\n            \"Electronic\"\n        ],\n        \"purchasedAt\": \"FNAC, París\",\n        \"notes\": \"Fusión de swing y electrónica con ritmos bailables.\",\n        \"isOwned\": true\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://isabelsaenz-202502-back.onrender.com/vinyls/aaaaaaaaaaaaaaaaaaaaaaaa",
+          "protocol": "https",
+          "host": ["isabelsaenz-202502-back", "onrender", "com"],
+          "path": ["vinyls", "aaaaaaaaaaaaaaaaaaaaaaaa"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST /vinyls errro 404",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"vinyls\": \n        {\n            \"title\": \"La baticueva\",\n            \"artist\": \"Wilfred y la Ganga\",\n            \"country\": \"Puerto Rico\",\n            \"genre\": \"hip-hop\",\n            \"format\": \"12\\\"\",\n            \"coverImageUrl\": \"https://miaguela.webp\",\n            \"purchasedAt\": \"Discos Latimore\",\n            \"notes\": \"\",\n            \"releaseDate\": \"1990-10-25\",\n            \"isOwned\": false,\n            \"styles\": [\n                \"\"\n            ]\n        }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://isabelsaenz-202502-back.onrender.com/vinyl",
+          "protocol": "https",
+          "host": ["isabelsaenz-202502-back", "onrender", "com"],
+          "path": ["vinyl"]
+        }
+      },
+      "response": []
     }
   ]
 }

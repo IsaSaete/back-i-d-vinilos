@@ -76,6 +76,7 @@ npm start
 | DELETE | `/vinyls/:vinylId`              | Deletes a vinyl by its ID.              |
 | POST   | `/vinyls`                       | Adds a new vinyl to the database.       |
 | GET    | `/vinyls/:vinylId`              | Get vinyl by ID                         |
+| PUT    | `/vinyls/:vinylId`              | Replaces a vinyl's data by its ID.      |
 
 ---
 
@@ -263,6 +264,7 @@ Status: 200 OK
     "year": 1959,
     "isOwned": true,
     "coverUrl": "https://example.com/kind-of-blue.jpg"
+    ...
   }
 }
 ```
@@ -271,6 +273,55 @@ Status: 200 OK
   - `400 Bad Request`: Id not valid
   - `409 Conflict`: If the vinyl already exists
   - `404 Not Found`: If the vinyl does not exist
+
+---
+
+🔁 **PUT /vinyls/:vinylId**  
+Replaces a vinyl's information completely by its ID.
+
+- **URL:** `/vinyls/:vinylId`
+- **Method:** `PUT`
+
+- **Params:** `vinylId`: ID of the vinyl to update
+
+**Request Body:**
+
+```json
+{
+  "vinyl": {
+    "_id": "6643e61db6c99acbce993c3f",
+    "title": "Kind of Blue (Remastered)",
+    "artist": "Miles Davis",
+    "year": 1959,
+    "genre": "Jazz",
+    "isOwned": true,
+    "coverUrl": "https://example.com/kind-of-blue-remastered.jpg"
+  }
+}
+```
+
+**Response:**
+
+- **Status:** `200 OK`
+
+```json
+{
+  "vinyl": {
+    "_id": "6643e61db6c99acbce993c3f",
+    "title": "Kind of Blue (Remastered)",
+    "artist": "Miles Davis",
+    "year": 1959,
+    "genre": "Jazz",
+    "isOwned": true,
+    "coverUrl": "https://example.com/kind-of-blue-remastered.jpg"
+  }
+}
+```
+
+**Possible Errors:**
+
+- `400 Bad Request`: ID not valid
+- `404 Not Found`: If the vinyl does not exist
 
 ---
 
