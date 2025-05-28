@@ -1,27 +1,26 @@
-# back-i-d
+# 🎧 I+D Vinyls – Backend API
 
-Backend for the **I+D** project, a RESTful API built with TypeScript, Express, and MongoDB Atlas, focused on managing a music vinyl collection.
+A RESTful API built with **Node.js**, **Express**, and **MongoDB** to support the I+D Vinyls application.
 
----
+This backend allows users to manage their vinyl collection by providing endpoints to create, read, update, and delete vinyl records.
 
-## 📌 Table of Contents
+## 🚀 Features
 
-- [Description](#description)
-- [Installation](#installation)
-- [API Endpoints](#api-endpoints)
-- [Available Scripts](#available-scripts)
-- [Project Structure](#project-structure)
-- [Testing](#testing)
-- [Code Quality](#code-quality)
-- [Deployment](#deployment)
-- [License](#license)
-- [Author](#author)
+- 📦 **CRUD operations** for vinyl records.
+- ⚙️ Built with **TypeScript** and **Express 5**.
+- 🧪 Unit and integration testing with **Jest** and **Supertest**.
+- 🛡️ Robust error handling and input validation.
+- 🔐 Environment variables managed via `.env`.
+- 💾 MongoDB with **Mongoose** ODM.
+- 🧰 Dev tools: ESLint, Prettier, Husky, Commitlint, and Lint-staged.
 
----
+## 🌐 Technologies
 
-## 🧾 Description
-
-This project implements the backend of an application to manage music vinyl records. It provides a REST API that allows retrieving and updating vinyls stored in a MongoDB Atlas cloud database. It follows a professional architecture including strong typing with TypeScript, automated tests, organized middleware, and modern development tools for code quality and formatting.
+- **Node.js** + **Express**
+- **MongoDB** + **Mongoose**
+- **TypeScript**
+- **Jest** / **Supertest**
+- **dotenv**, **debug**, **chalk**, **morgan**
 
 ---
 
@@ -46,37 +45,12 @@ npm install
 cp .env.sample .env
 ```
 
-Update it with your environment variables.
-
----
-
-## ▶️ Usage
-
-To run the project in development mode:
+4. Build and run the server
 
 ```bash
+npm run build:dev
 npm run start:dev
 ```
-
-To compile and run in production mode:
-
-```bash
-npm run build
-npm start
-```
-
----
-
-## 🔁 API Endpoints
-
-| Method | Route                           | Description                             |
-| ------ | ------------------------------- | --------------------------------------- |
-| GET    | `/vinyls`                       | Retrieves a paginated list of vinyls.   |
-| PATCH  | `/vinyls/toggle-owned/:vinylId` | Toggles the `isOwned` state of a vinyl. |
-| DELETE | `/vinyls/:vinylId`              | Deletes a vinyl by its ID.              |
-| POST   | `/vinyls`                       | Adds a new vinyl to the database.       |
-| GET    | `/vinyls/:vinylId`              | Get vinyl by ID                         |
-| PUT    | `/vinyls/:vinylId`              | Replaces a vinyl's data by its ID.      |
 
 ---
 
@@ -98,20 +72,22 @@ npm start
 ## 🧱 Project Structure
 
 ```
-📁 src
-├── database/
-│   └── connectToDatabase.ts
-├── server/
-│   ├── middleware/
-│   ├── __tests__/
-│   ├── app.ts
-│   └── startServer.ts
-├── vinyl/
-│   ├── controller/
-│   ├── model/
-│   ├── router/
-│   └── types.ts
-├── index.ts
+📁 src/
+├── server/               # Express server setup and middleware
+│   ├── app.ts            # Main Express app
+│   └── startServer.ts    # Initializes and starts the server
+│
+├── vinyl/                # Feature module: Vinyls
+│   ├── model/            # Mongoose schema and model
+│   ├── controller/       # Route controller logic
+│   ├── router/           # Express routers for vinyl endpoints
+│   ├── fixtures.ts       # Sample data for development and testing
+│   └── types.ts          # Vinyl-specific TypeScript types
+│
+├── database/             # MongoDB connection logic
+├── middleware/           # Custom Express middleware functions
+├── globals/              # Shared types and constants
+└── index.ts              # Entry point of the application
 ```
 
 The project uses a feature-based structure, clearly separating controllers, routers, middleware, and models.
@@ -119,6 +95,17 @@ The project uses a feature-based structure, clearly separating controllers, rout
 ---
 
 ## 🎧 API Endpoints - Vinyls
+
+| Method | Route                           | Description                             |
+| ------ | ------------------------------- | --------------------------------------- |
+| GET    | `/vinyls`                       | Retrieves a paginated list of vinyls.   |
+| PATCH  | `/vinyls/toggle-owned/:vinylId` | Toggles the `isOwned` state of a vinyl. |
+| DELETE | `/vinyls/:vinylId`              | Deletes a vinyl by its ID.              |
+| POST   | `/vinyls`                       | Adds a new vinyl to the database.       |
+| GET    | `/vinyls/:vinylId`              | Get vinyl by ID                         |
+| PUT    | `/vinyls/:vinylId`              | Replaces a vinyl's data by its ID.      |
+
+---
 
 ### 📄 GET /vinyls
 
@@ -173,7 +160,6 @@ Status: 200 OK
 
 - **Possible Errors:**
   - `400 Bad Request`: Id not valid
-  - `409 Conflict`: If the vinyl already exists
   - `404 Not Found`: If the vinyl does not exist
 
 ### 🗑 DELETE /vinyls/:vinylId
@@ -234,6 +220,9 @@ Status: 201 Created
   "vinyl": {
     "_id": "456def",
     "title": "New Vinyl",
+    "artist": "Artist Name",
+    "genre": "Rock",
+    "isOwned": false,
     ...
   }
 }
@@ -271,7 +260,6 @@ Status: 200 OK
 
 - **Possible Errors:**
   - `400 Bad Request`: Id not valid
-  - `409 Conflict`: If the vinyl already exists
   - `404 Not Found`: If the vinyl does not exist
 
 ---
@@ -411,4 +399,4 @@ This project is licensed under the **ISC License**.
 
 **Isabel Sáenz**  
 For the **I+D Vinilos** project
-[GitHub](https://github.com/IsaSaete/back-i-d-vinilos.git)
+[GitHub](https://github.com/IsaSaete/back-i-d-vinilos)
